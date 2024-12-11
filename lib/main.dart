@@ -62,6 +62,26 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           // Spacer
           const SizedBox(height: 50),
+          SizedBox(
+            height: 250,
+            child: CarouselView(
+              elevation: 2,
+              padding: const EdgeInsets.all(10),
+              itemExtent: MediaQuery.of(context).size.width - 30,
+              itemSnapping: true,
+              children: List.generate(5, (index) {
+                // Using the Picsum API to generate random images
+                String imageUrl =
+                    'https://picsum.photos/id/${237 + index}/200/300';
+                return Image.network(
+                  imageUrl,
+                  fit: BoxFit.cover,
+                );
+              }),
+            ),
+          ),
+          // Spacer
+          const SizedBox(height: 50),
           // Second Carouselview
           Center(
             child: ConstrainedBox(
@@ -69,6 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: CarouselView(
                 itemExtent: 330,
                 shrinkExtent: 200,
+                itemSnapping: true, // Smooth snapping behavior
                 children: List<Widget>.generate(20, (int index) {
                   return UncontainedLayoutCard(
                       index: index, label: 'Item $index');
