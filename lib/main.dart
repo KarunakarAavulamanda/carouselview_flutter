@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           // First Carouselview
           SizedBox(
-            height: 250,
+            height: 200,
             child: CarouselView(
               elevation: 2,
               onTap: (tapIndex) {
@@ -62,8 +62,10 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           // Spacer
           const SizedBox(height: 50),
+          // Second Carouselview
+          //Using the Picsum API to generate random images
           SizedBox(
-            height: 250,
+            height: 200,
             child: CarouselView(
               elevation: 2,
               padding: const EdgeInsets.all(10),
@@ -82,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           // Spacer
           const SizedBox(height: 50),
-          // Second Carouselview
+          // third Carouselview
           Center(
             child: ConstrainedBox(
               constraints: const BoxConstraints(maxHeight: 200),
