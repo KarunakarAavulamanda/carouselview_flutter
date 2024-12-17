@@ -38,68 +38,70 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Column(
-        children: [
-          // First Carouselview
-          SizedBox(
-            height: 200,
-            child: CarouselView(
-              elevation: 2,
-              onTap: (tapIndex) {
-                _showImageDialog(
-                    context, 'assets/images/image_${tapIndex + 1}.jpeg');
-              },
-              padding: const EdgeInsets.all(10),
-              itemExtent: MediaQuery.of(context).size.width - 30,
-              itemSnapping: true,
-              children: List.generate(5, (index) {
-                return Image.asset(
-                  'assets/images/image_${index + 1}.jpeg',
-                  fit: BoxFit.cover,
-                );
-              }),
-            ),
-          ),
-          // Spacer
-          const SizedBox(height: 50),
-          // Second Carouselview
-          //Using the Picsum API to generate random images
-          SizedBox(
-            height: 200,
-            child: CarouselView(
-              elevation: 2,
-              padding: const EdgeInsets.all(10),
-              itemExtent: MediaQuery.of(context).size.width - 30,
-              itemSnapping: true,
-              children: List.generate(5, (index) {
-                // Using the Picsum API to generate random images
-                String imageUrl =
-                    'https://picsum.photos/id/${237 + index}/200/300';
-                return Image.network(
-                  imageUrl,
-                  fit: BoxFit.cover,
-                );
-              }),
-            ),
-          ),
-          // Spacer
-          const SizedBox(height: 50),
-          // third Carouselview
-          Center(
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxHeight: 200),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            // First Carouselview
+            SizedBox(
+              height: 400,
               child: CarouselView(
-                itemExtent: 330,
-                shrinkExtent: 200,
-                itemSnapping: true, // Smooth snapping behavior
-                children: List<Widget>.generate(20, (int index) {
-                  return UncontainedLayoutCard(
-                      index: index, label: 'Item $index');
+                elevation: 2,
+                onTap: (tapIndex) {
+                  _showImageDialog(
+                      context, 'assets/images/image_${tapIndex + 1}.jpeg');
+                },
+                padding: const EdgeInsets.all(10),
+                itemExtent: MediaQuery.of(context).size.width - 30,
+                itemSnapping: true,
+                children: List.generate(5, (index) {
+                  return Image.asset(
+                    'assets/images/image_${index + 1}.jpeg',
+                    fit: BoxFit.cover,
+                  );
                 }),
               ),
             ),
-          ),
-        ],
+            // Spacer
+            const SizedBox(height: 50),
+            // Second Carouselview
+            //Using the Picsum API to generate random images
+            SizedBox(
+              height: 400,
+              child: CarouselView(
+                elevation: 2,
+                padding: const EdgeInsets.all(10),
+                itemExtent: MediaQuery.of(context).size.width - 30,
+                itemSnapping: true,
+                children: List.generate(5, (index) {
+                  // Using the Picsum API to generate random images
+                  String imageUrl =
+                      'https://picsum.photos/id/${237 + index}/200/300';
+                  return Image.network(
+                    imageUrl,
+                    fit: BoxFit.cover,
+                  );
+                }),
+              ),
+            ),
+            // Spacer
+            const SizedBox(height: 50),
+            // third Carouselview
+            Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxHeight: 200),
+                child: CarouselView(
+                  itemExtent: 330,
+                  shrinkExtent: 200,
+                  itemSnapping: true, // Smooth snapping behavior
+                  children: List<Widget>.generate(20, (int index) {
+                    return UncontainedLayoutCard(
+                        index: index, label: 'Item $index');
+                  }),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
